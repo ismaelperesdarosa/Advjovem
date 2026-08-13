@@ -1,1 +1,97 @@
-
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Site oficial da Congregação Adventista Central de Canguçu: cultos, escola sabatina, dízimos e ofertas, estudos bíblicos, atendimento pastoral e links úteis." />
+  <title>IASD Central de Canguçu</title>
+  <style>
+    :root { --navy:#10284f; --blue:#1f5f9f; --gold:#f2c14e; --cream:#fff8ea; --white:#fff; --ink:#1c2430; --muted:#607086; --green:#2f8f5b; --shadow:0 22px 60px rgba(16,40,79,.16); --radius:26px; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:"Segoe UI",Roboto,Arial,sans-serif; color:var(--ink); background:radial-gradient(circle at top left,rgba(242,193,78,.25),transparent 34rem),linear-gradient(180deg,#f6f8fc 0%,#fff 45%,#fff8ea 100%); line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    .topbar { position:sticky; top:0; z-index:20; backdrop-filter:blur(16px); background:rgba(255,255,255,.82); border-bottom:1px solid rgba(16,40,79,.08); }
+    .nav { width:min(1120px,calc(100% - 32px)); margin:auto; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:14px 0; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; color:var(--navy); letter-spacing:-.03em; }
+    .brand img { width:54px; height:54px; object-fit:contain; border-radius:50%; background:var(--white); box-shadow:0 8px 20px rgba(16,40,79,.12); }
+    .brand span small { display:block; color:var(--muted); font-size:.76rem; font-weight:700; letter-spacing:.06em; text-transform:uppercase; }
+    .navlinks { display:flex; flex-wrap:wrap; justify-content:flex-end; gap:10px; font-weight:700; color:var(--navy); }
+    .navlinks a { padding:9px 12px; border-radius:999px; }
+    .navlinks a:hover { background:rgba(31,95,159,.08); }
+    .hero { width:min(1120px,calc(100% - 32px)); margin:42px auto 0; display:grid; grid-template-columns:1.05fr .95fr; gap:34px; align-items:center; min-height:610px; }
+    .eyebrow { display:inline-flex; align-items:center; gap:9px; padding:8px 13px; border-radius:999px; background:rgba(47,143,91,.1); color:var(--green); font-weight:800; font-size:.92rem; }
+    .eyebrow::before { content:""; width:9px; height:9px; border-radius:50%; background:var(--green); box-shadow:0 0 0 6px rgba(47,143,91,.13); }
+    h1 { margin:18px 0 16px; color:var(--navy); font-size:clamp(2.35rem,5vw,5rem); line-height:.96; letter-spacing:-.07em; }
+    .lead { font-size:clamp(1.06rem,2vw,1.32rem); color:#41516a; max-width:650px; margin-bottom:28px; }
+    .hero-actions,.button-row { display:flex; gap:13px; flex-wrap:wrap; }
+    .btn { display:inline-flex; align-items:center; justify-content:center; gap:9px; min-height:48px; padding:13px 18px; border-radius:999px; font-weight:900; transition:transform .2s ease,box-shadow .2s ease,background .2s ease; border:1px solid transparent; }
+    .btn:hover { transform:translateY(-2px); }
+    .btn-primary { background:linear-gradient(135deg,var(--gold),#ffd979); color:#2b2106; box-shadow:0 13px 28px rgba(242,193,78,.32); }
+    .btn-secondary { background:var(--navy); color:var(--white); box-shadow:0 13px 28px rgba(16,40,79,.24); }
+    .btn-outline { background:rgba(255,255,255,.78); color:var(--navy); border-color:rgba(16,40,79,.12); }
+    .hero-card { position:relative; overflow:hidden; border-radius:36px; min-height:470px; padding:30px; color:var(--white); background:linear-gradient(145deg,rgba(16,40,79,.93),rgba(31,95,159,.82)),url("agendamento.jpg") center/cover; box-shadow:var(--shadow); }
+    .hero-card::after { content:""; position:absolute; inset:auto -70px -90px auto; width:240px; height:240px; border-radius:50%; background:rgba(242,193,78,.34); }
+    .hero-card img { width:112px; height:112px; object-fit:contain; border-radius:28px; background:rgba(255,255,255,.9); padding:10px; margin-bottom:50px; }
+    .hero-card h2 { position:relative; z-index:1; margin:0 0 12px; font-size:clamp(1.8rem,3vw,2.6rem); line-height:1.02; letter-spacing:-.04em; }
+    .hero-card p { position:relative; z-index:1; max-width:420px; color:rgba(255,255,255,.88); font-size:1.05rem; }
+    section { width:min(1120px,calc(100% - 32px)); margin:76px auto; }
+    .section-title { display:flex; justify-content:space-between; align-items:end; gap:18px; margin-bottom:22px; }
+    .section-title h2 { margin:0; color:var(--navy); font-size:clamp(1.8rem,3vw,2.8rem); line-height:1; letter-spacing:-.05em; }
+    .section-title p { margin:0; color:var(--muted); max-width:520px; }
+    .grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card { background:rgba(255,255,255,.86); border:1px solid rgba(16,40,79,.09); border-radius:var(--radius); padding:24px; box-shadow:0 14px 38px rgba(16,40,79,.08); }
+    .card strong.kicker { display:inline-block; color:var(--blue); font-size:.78rem; text-transform:uppercase; letter-spacing:.08em; margin-bottom:10px; }
+    .card h3 { color:var(--navy); margin:0 0 8px; font-size:1.35rem; letter-spacing:-.03em; }
+    .card p { color:var(--muted); margin:0 0 18px; }
+    .featured { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .feature-card { min-height:390px; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; position:relative; border-radius:34px; padding:28px; color:var(--white); box-shadow:var(--shadow); isolation:isolate; }
+    .feature-card::before { content:""; position:absolute; inset:0; z-index:-2; background:var(--img) center/cover; transform:scale(1.02); }
+    .feature-card::after { content:""; position:absolute; inset:0; z-index:-1; background:linear-gradient(180deg,rgba(16,40,79,.06),rgba(16,40,79,.86)); }
+    .feature-card h3 { margin:0 0 10px; font-size:clamp(1.65rem,3vw,2.35rem); line-height:1; letter-spacing:-.05em; }
+    .feature-card p { margin:0 0 18px; color:rgba(255,255,255,.9); }
+    .schedule { background:linear-gradient(135deg,var(--navy),#173d78); color:var(--white); border-radius:36px; padding:30px; box-shadow:var(--shadow); display:grid; grid-template-columns:.9fr 1.1fr; gap:24px; align-items:center; }
+    .schedule h2 { margin:0 0 10px; font-size:clamp(1.8rem,4vw,3rem); line-height:1; letter-spacing:-.05em; }
+    .schedule p { color:rgba(255,255,255,.78); margin:0; }
+    .times { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+    .time { background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.16); border-radius:20px; padding:17px; }
+    .time b { display:block; font-size:1.15rem; color:var(--gold); }
+    .time span { color:rgba(255,255,255,.84); }
+    .contact-band { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .footer { background:#091a34; color:rgba(255,255,255,.74); padding:34px 16px; text-align:center; }
+    .footer b { color:var(--white); }
+    @media (max-width:860px) { .hero,.schedule,.featured,.contact-band { grid-template-columns:1fr; } .grid { grid-template-columns:1fr; } .section-title { display:block; } .nav { align-items:flex-start; } .navlinks { display:none; } .hero { min-height:auto; margin-top:28px; } .hero-card { min-height:390px; } .times { grid-template-columns:1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="Navegação principal">
+      <a class="brand" href="#inicio" aria-label="Início"><img src="logo.png" alt="Logo da IASD Central de Canguçu" /><span>IASD Central<small>Canguçu</small></span></a>
+      <div class="navlinks"><a href="#programacao">Programação</a><a href="#formularios">Formulários</a><a href="#links">Links úteis</a><a href="#contato">Contato</a></div>
+    </nav>
+  </header>
+  <main id="inicio">
+    <section class="hero">
+      <div>
+        <span class="eyebrow">Uma igreja para adorar, servir e recomeçar</span>
+        <h1>Bem-vindo à Congregação Adventista Central de Canguçu</h1>
+        <p class="lead">Aqui você encontra caminhos rápidos para participar da Escola Sabatina, contribuir com dízimos e ofertas, solicitar atendimento pastoral e iniciar estudos bíblicos. Sua caminhada com Deus pode começar — ou recomeçar — hoje.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdcXCQahHvG0-PfChUNfVtsRtM85zEjP2yvxFxCDAP78Q7ZPg/viewform?usp=header" target="_blank" rel="noopener">Quero estudar a Bíblia</a>
+          <a class="btn btn-secondary" href="https://docs.google.com/forms/d/e/1FAIpQLSed9BQjtdpI0OpKUc0DR6Yx1Uf77tykEvX7SruAfYmWbOw8aQ/viewform?usp=header" target="_blank" rel="noopener">Falar com o pastor</a>
+          <a class="btn btn-outline" href="https://maps.app.goo.gl/ZR27eTFXWUogXDbN9" target="_blank" rel="noopener">Como chegar</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Convite da igreja"><img src="logo.png" alt="" /><h2>Você não precisa caminhar sozinho.</h2><p>Cultive fé, família e esperança conosco. Participe dos cultos, acompanhe as lives e conecte-se a uma comunidade que ora, acolhe e serve.</p></aside>
+    </section>
+    <section id="programacao" class="schedule">
+      <div><h2>Dias e horários</h2><p>Reserve estes momentos para estar com Deus. Uma semana com propósito começa quando colocamos a fé no centro da rotina.</p></div>
+      <div class="times" aria-label="Programação semanal"><div class="time"><b>Sábado</b><span>9:00 — Escola Sabatina e culto</span></div><div class="time"><b>Domingo</b><span>19:30 — Culto de adoração</span></div><div class="time"><b>Quarta</b><span>19:30 — Culto de oração</span></div><div class="time"><b>Sexta</b><span>19:30 — Pequeno Grupo (PG)</span></div></div>
+    </section>
+    <section id="formularios"><div class="section-title"><h2>Escolha seu próximo passo</h2><p>Dois formulários, duas oportunidades: receber cuidado espiritual e aprofundar sua fé com estudos bíblicos.</p></div><div class="featured"><article class="feature-card" style="--img: url('agendamento.jpg')"><h3>Atendimento pastoral</h3><p>Precisa conversar, pedir oração ou receber orientação? Agende um atendimento. Existe cuidado, escuta e esperança para você.</p><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSed9BQjtdpI0OpKUc0DR6Yx1Uf77tykEvX7SruAfYmWbOw8aQ/viewform?usp=header" target="_blank" rel="noopener">Agendar atendimento</a></article><article class="feature-card" style="--img: url('estudos.jpg')"><h3>Estudos bíblicos</h3><p>Descubra respostas para as grandes perguntas da vida. Comece uma jornada bíblica simples, acolhedora e transformadora.</p><a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdcXCQahHvG0-PfChUNfVtsRtM85zEjP2yvxFxCDAP78Q7ZPg/viewform?usp=header" target="_blank" rel="noopener">Quero estudar</a></article></div></section>
+    <section id="links"><div class="section-title"><h2>Links importantes</h2><p>Tudo em um só lugar para facilitar sua participação na vida da igreja.</p></div><div class="grid"><article class="card"><strong class="kicker">Escola Sabatina</strong><h3>Quiz da lição</h3><p>Teste seus conhecimentos, revise a lição e chegue mais preparado para compartilhar no sábado.</p><a class="btn btn-secondary" href="https://es.minhaes.org/quizgeral/1/649DAD0F-CA49-4394-B33A-95F426CD04B8" target="_blank" rel="noopener">Acessar quiz</a></article><article class="card"><strong class="kicker">Fidelidade</strong><h3>Dízimos e ofertas</h3><p>Contribua com gratidão e participe da missão de levar esperança a mais pessoas.</p><a class="btn btn-secondary" href="https://giving.7me.app/guest-donation/church/5197e1a2-ea9a-4b80-99e6-380f9c8a6999" target="_blank" rel="noopener">Contribuir agora</a></article><article class="card"><strong class="kicker">Materiais</strong><h3>Drive da igreja</h3><p>Acesse arquivos, materiais e conteúdos compartilhados pela congregação.</p><a class="btn btn-secondary" href="https://drive.google.com/drive/folders/1R1PgETB5WW0VJDGqAwHVCDE0tD83VIAc?usp=sharing" target="_blank" rel="noopener">Abrir Drive</a></article></div></section>
+    <section id="contato"><div class="section-title"><h2>Acompanhe e visite</h2><p>Quando não puder estar presencialmente, acompanhe nossas lives nos dias de culto pelo Facebook. Mas, sempre que puder, venha adorar conosco.</p></div><div class="contact-band"><article class="card"><strong class="kicker">Ao vivo</strong><h3>Facebook da igreja</h3><p>Siga a página da IASD Canguçu e acompanhe nossas lives nos dias de cultos. Compartilhe com alguém que precisa ouvir uma mensagem de esperança.</p><a class="btn btn-primary" href="https://www.facebook.com/IASDCangucu" target="_blank" rel="noopener">Acompanhar no Facebook</a></article><article class="card"><strong class="kicker">Localização</strong><h3>Venha nos visitar</h3><p>Sua presença será uma alegria. Clique abaixo para abrir o endereço no Google Maps e traçar sua rota até a igreja.</p><a class="btn btn-primary" href="https://maps.app.goo.gl/ZR27eTFXWUogXDbN9" target="_blank" rel="noopener">Ver endereço</a></article></div></section>
+  </main>
+  <footer class="footer"><b>IASD Central de Canguçu</b><br />Fé, acolhimento e missão. Esperamos você.</footer>
+</body>
+</html>
